@@ -1,3 +1,5 @@
+const babelConfigFilePath = require('./lib/babelConfigFilePath')
+
 // @ts-check
 // webpack compiler options properties are marked as optional
 // although most of them are not optional
@@ -5,8 +7,12 @@
 // `import('ts-essentials').DeepRequired`
 /** @typedef {import('ts-essentials').DeepRequired<import("webpack").Compiler>} WebpackCompiler */
 /**
+ * JsConfigWebpackPlugin Options
+ * @typedef {{ babelConfigFile?: string }} JsConfigWebpackPluginOptions
+ */
+/**
  * Plugin Options
- * @typedef {{ mode?: 'production' | 'development'; }} HtmlConfigWebpackPluginOptions
+ * @typedef {{ mode?: 'production' | 'development'; js?: JsConfigWebpackPluginOptions }} HtmlConfigWebpackPluginOptions
  */
 const defaultOptions = {}
 
@@ -30,9 +36,19 @@ class HtmlConfigWebpackPlugin
             compiler.options.mode
         ].some(mode => mode === 'production')
 
+        const mode = modeProduction ? 'production' : 'development'
+
+        const jsOptions = {
+            ...this.options.js || {}
+        }
+        if (!jsOptions.babelConfigFile) jsOptions.babelConfigFile = babelConfigFilePath(compiler.context, mode)
+
+        /**
+         * @type HtmlConfigWebpackPluginOptions
+         */
         const options = {
-            mode: modeProduction ? 'production' : 'development',
-            ...this.options
+            mode,
+            js: jsOptions,
         }
 
         const config = modeProduction

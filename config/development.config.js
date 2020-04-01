@@ -18,7 +18,7 @@ exports = module.exports = options => ({
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new JsConfigWebpackPlugin({ babelConfigFile: './babel.config.js' }),
+        new JsConfigWebpackPlugin(options.js),
         new TsConfigWebpackPlugin(),
         new AssetConfigWebpackPlugin(),
         new HtmlConfigWebpackPlugin(),
