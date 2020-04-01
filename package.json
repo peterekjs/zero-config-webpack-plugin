@@ -1,6 +1,6 @@
 {
   "name": "@peterek/zero-config-webpack-plugin",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Webpack config base to start project with zero-configuration",
   "main": "index.js",
   "scripts": {
