@@ -17,5 +17,5 @@
             ]
         }
     },
-    "presets": ["@babel/env"]
+    "presets": ["@babel/env", "@babel/typescript"]
 }
