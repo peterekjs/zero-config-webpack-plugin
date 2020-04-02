@@ -42,7 +42,7 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-typescript": "^7.9.0",
     "@peterek/html-config-webpack-plugin": "^1.0.2",
-    "@peterek/sass-config-webpack-plugin": "^1.0.5",
+    "@peterek/sass-config-webpack-plugin": "^1.0.6",
     "asset-config-webpack-plugin": "^2.0.0",
     "clean-webpack-plugin": "^3.0.0",
     "gensync": "^1.0.0-beta.1",
